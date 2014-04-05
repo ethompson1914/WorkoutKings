@@ -40,30 +40,30 @@ public class MainActivity extends Activity {
 		// Create and populate a List of workout names.
 		ArrayList<String> workoutNames = new ArrayList<String>();
 		int count = 1;
-		workoutNames.add("Create new workout");
+		workoutNames.add("Create new workout...");
 		while(!workoutsList.isEmpty() && count < workoutsList.size()) {
 			workoutNames.add(workoutsList.get(count).getName());
 			count++;
-
-			// Create ArrayAdapter using the workout list.
-			listAdapter = new ArrayAdapter<String>(this, R.layout.simplerow, workoutNames);
-
-			// Set the ArrayAdapter as the ListView's adapter.
-			mainListView.setAdapter( listAdapter );
-
-			mainListView.setOnItemClickListener(new OnItemClickListener() {
-				public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
-					if(position == 0) {
-						// "Create New Workout" was clicked   
-						Intent intent = new Intent(view.getContext(), NewWorkoutActivity.class);
-						startActivity(intent);
-					} else {
-						// Anything else was clicked    
-						Intent intent = new Intent(view.getContext(), WorkoutActivity.class);
-						startActivity(intent);
-					}                 
-				}
-			});     
 		}
+
+		// Create ArrayAdapter using the workout list.
+		listAdapter = new ArrayAdapter<String>(this, R.layout.simplerow, workoutNames);
+
+		// Set the ArrayAdapter as the ListView's adapter.
+		mainListView.setAdapter( listAdapter );
+
+		mainListView.setOnItemClickListener(new OnItemClickListener() {
+			public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
+				if(position == 0) {
+					// "Create New Workout" was clicked   
+					Intent intent = new Intent(view.getContext(), NewWorkoutActivity.class);
+					startActivity(intent);
+				} else {
+					// Anything else was clicked    
+					Intent intent = new Intent(view.getContext(), WorkoutActivity.class);
+					startActivity(intent);
+				}                 
+			}
+		});     
 	}
 }

@@ -32,32 +32,8 @@
             android:label="@string/title_activity_new_workout" >
         </activity>
         <activity
-            android:name="lin.thompson.workoutkings.Activity.PresetWorkoutActivity"
-            android:label="@string/title_activity_preset_workout" >
-        </activity>
-        <activity
             android:name="lin.thompson.workoutkings.ToActivity"
             android:label="@string/app_name" >
-        </activity>
-        <activity
-            android:name="lin.thompson.workoutkings.Activity.Deck4ExercisesActivity"
-            android:label="@string/title_activity_preset_deck_exercises" >
-        </activity>
-        <activity
-            android:name="lin.thompson.workoutkings.Activity.NewExerciseActivityewExerciseActivity"
-            android:label="@string/title_activity_new_exercise" >
-        </activity>
-        <activity
-            android:name="lin.thompson.workoutkings.Activity.ChooseCardsActivity"
-            android:label="@string/title_activity_choose_cards" >
-        </activity>
-        <activity
-            android:name="lin.thompson.workoutkings.Activity.MainWorkoutActivityutkings.MainWorkoutActivity"
-            android:label="@string/title_activity_main_workout" >
-        </activity>
-        <activity
-            android:name="lin.thompson.workoutkings.Activity.Deck2ExercisesActivity"
-            android:label="@string/title_activity_deck2_exercises" >
         </activity>
         <activity
             android:name="lin.thompson.workoutkings.Activity.WorkoutActivity"

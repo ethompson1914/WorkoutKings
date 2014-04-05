@@ -30,6 +30,10 @@ public class WorkoutActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 	
+	public WorkoutActivity() {
+		super();
+	}
+	
 	public WorkoutActivity(Workout workout) {
 		this.workout = workout;
 		this.deck = workout.getDeck();
@@ -37,11 +41,6 @@ public class WorkoutActivity extends ActionBarActivity {
 	
 	public Workout getWorkout() {
 		return workout;
-	}
-	
-	// This is private for now, may want to make it either public or delete the entire method later
-	private void changeWorkout(Workout newWorkout) {
-		this.workout = newWorkout;
 	}
 
 }
