@@ -13,14 +13,53 @@ public class WorkoutFactoryImpl implements WorkoutFactory {
 	}
 
 	@Override
-	public Workout createHardcodedWorkout() {
+	public Workout createHardcodedWorkoutOne() {
 		CardDeck deck = new CardDeck();
 		ArrayList<String> exercises = new ArrayList<String>();
 		exercises.add(new String("Pushups"));
 		exercises.add(new String("Situps"));
 		exercises.add(new String("Squats"));
 		exercises.add(new String("Lunges"));
-		Workout workout = new Workout("Hardcode", deck, exercises);
+		Workout workout = new Workout("Workout 1", deck, exercises);
+		
+		return workout;
+	}
+
+	@Override
+	public Workout createHardcodedWorkoutTwo() {
+		CardDeck deck = new CardDeck();
+		ArrayList<String> exercises = new ArrayList<String>();
+		exercises.add(new String("Pushups"));
+		exercises.add(new String("Situps"));
+		exercises.add(new String("Squats"));
+		exercises.add(new String("Lunges"));
+		Workout workout = new Workout("Workout 2", deck, exercises);
+		
+		return workout;
+	}
+
+	@Override
+	public Workout createHardcodedWorkoutThree() {
+		CardDeck deck = new CardDeck();
+		ArrayList<String> exercises = new ArrayList<String>();
+		exercises.add(new String("Pushups"));
+		exercises.add(new String("Situps"));
+		exercises.add(new String("Squats"));
+		exercises.add(new String("Lunges"));
+		Workout workout = new Workout("Workout 3", deck, exercises);
+		
+		return workout;
+	}
+
+	@Override
+	public Workout createHardcodedWorkoutFour() {
+		CardDeck deck = new CardDeck();
+		ArrayList<String> exercises = new ArrayList<String>();
+		exercises.add(new String("Pushups"));
+		exercises.add(new String("Situps"));
+		exercises.add(new String("Squats"));
+		exercises.add(new String("Lunges"));
+		Workout workout = new Workout("Workout 4", deck, exercises);
 		
 		return workout;
 	}
@@ -28,6 +67,12 @@ public class WorkoutFactoryImpl implements WorkoutFactory {
 	@Override
 	public Workout createBlankWorkout() {
 		return new Workout("Blank");
+	}
+
+	@Override
+	public Workout createHardcodedWorkout() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

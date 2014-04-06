@@ -3,6 +3,7 @@ package lin.thompson.workoutkings.Activity;
 import lin.thompson.workoutkings.R;
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -36,6 +37,15 @@ public class WorkoutActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public void onClick(View v){
+
+	    if(v.getId() == R.id.backbutton_workout){
+	        finish(); 
+	    } else if (v.getId() == R.id.nextbutton_workout) {
+	    	// TODO
+	    } 
 	}
 
 }

@@ -13,5 +13,13 @@ public interface WorkoutFactory {
 
 	Workout createWorkout(String name, CardDeck deck,
 			ArrayList<String> exercises);
+
+	Workout createHardcodedWorkoutOne();
+
+	Workout createHardcodedWorkoutTwo();
+
+	Workout createHardcodedWorkoutThree();
+
+	Workout createHardcodedWorkoutFour();
 	
 }

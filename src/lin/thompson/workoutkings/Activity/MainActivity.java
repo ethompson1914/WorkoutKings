@@ -33,9 +33,10 @@ public class MainActivity extends Activity {
 		// Hardcoded workouts for now
 		ArrayList<Workout> workoutsList = new ArrayList<Workout>();
 		workoutsList.add(factory.createBlankWorkout());
-		workoutsList.add(factory.createHardcodedWorkout());
-		workoutsList.add(factory.createHardcodedWorkout());
-		workoutsList.add(factory.createHardcodedWorkout());
+		workoutsList.add(factory.createHardcodedWorkoutOne());
+		workoutsList.add(factory.createHardcodedWorkoutTwo());
+		workoutsList.add(factory.createHardcodedWorkoutThree());
+		workoutsList.add(factory.createHardcodedWorkoutFour());
 
 		// Create and populate a List of workout names.
 		ArrayList<String> workoutNames = new ArrayList<String>();

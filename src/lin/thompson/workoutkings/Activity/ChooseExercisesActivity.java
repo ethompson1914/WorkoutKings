@@ -50,7 +50,8 @@ public class ChooseExercisesActivity extends Activity {
 			startActivity(intent);
 	    } else if (v.getId() == R.id.readybutton_chooseexercises) {
 	    	// TODO "Let's Do This" button was pressed
-	    	
+	    	Intent intent = new Intent(v.getContext(), WorkoutActivity.class);
+			startActivity(intent);
 	    }
 	}
 
