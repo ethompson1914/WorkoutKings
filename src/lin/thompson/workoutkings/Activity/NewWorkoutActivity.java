@@ -2,6 +2,7 @@ package lin.thompson.workoutkings.Activity;
 
 import lin.thompson.workoutkings.R;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -27,8 +28,14 @@ public class NewWorkoutActivity extends Activity {
 	        finish(); 
 	    } else if (v.getId() == R.id.custombutton || v.getId() == R.id.fulldeckbutton) {
 	    	// TODO
+			// "Create New Workout" was clicked   
+			Intent intent = new Intent(v.getContext(), ChooseCardsActivity.class);
+			startActivity(intent);
 	    } else if (v.getId() == R.id.halfdeckbutton) {
-	    	// TODO
+	    	// TODO Need a way to differentiate between half and full decks
+	    	// "Create New Workout" was clicked   
+	    	Intent intent = new Intent(v.getContext(), ChooseCardsActivity.class);
+	    	startActivity(intent);
 	    }
 	}
 

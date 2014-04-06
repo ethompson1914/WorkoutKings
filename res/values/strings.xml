@@ -12,5 +12,6 @@
     <string name="title_activity_main_workout">MainWorkoutActivity</string>
     <string name="title_activity_deck2_exercises">Deck2ExercisesActivity</string>
     <string name="title_activity_workout">WorkoutActivity</string>
+    <string name="title_activity_choose_exercises">ChooseExercisesActivity</string>
 
 </resources>

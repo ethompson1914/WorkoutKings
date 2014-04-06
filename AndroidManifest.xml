@@ -39,6 +39,26 @@
             android:name="lin.thompson.workoutkings.Activity.WorkoutActivity"
             android:label="@string/title_activity_workout" >
         </activity>
+        <activity
+            android:name="lin.thompson.workoutkings.Activity.WorkoutActivity"
+            android:label="@string/title_activity_workout" >
+        </activity>
+        <activity
+            android:name="lin.thompson.workoutkings.Activity.WorkoutActivity"
+            android:label="@string/title_activity_workout" >
+        </activity>
+        <activity
+            android:name="lin.thompson.workoutkings.Activity.ChooseCardsActivity"
+            android:label="@string/title_activity_choose_cards" >
+        </activity>
+        <activity
+            android:name="lin.thompson.workoutkings.Activity.ChooseExercisesActivity"
+            android:label="@string/title_activity_choose_exercises" >
+        </activity>
+        <activity
+            android:name="lin.thompson.workoutkings.Activity.NewExerciseActivity"
+            android:label="@string/title_activity_new_exercise" >
+        </activity>
     </application>
 
 </manifest>
