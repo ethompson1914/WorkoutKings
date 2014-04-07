@@ -89,7 +89,7 @@ public class WorkoutActivity extends Activity {
 
 	// TODO
 	public void showNewCard() {
-		Card cardToShow = new Card(1, 5);
+		Card cardToShow = randomCardFromDeck();
 		String cardName = helpers.getNameFromCard(cardToShow);
 		setImageResource(GlobalHelpers.NAMED_RESOURCES.get(cardName));
 
@@ -99,6 +99,6 @@ public class WorkoutActivity extends Activity {
 	private void setImageResource(Integer integer) {
 		// TODO Auto-generated method stub
 		ImageView image = (ImageView) findViewById(R.id.imageView1);
-		image.setImageDrawable(getResources().getDrawable(R.drawable.spades_five));
+		image.setImageDrawable(getResources().getDrawable(integer));
 	}
 }
