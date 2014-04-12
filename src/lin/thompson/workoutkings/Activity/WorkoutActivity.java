@@ -1,9 +1,9 @@
 package lin.thompson.workoutkings.Activity;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 import lin.thompson.deck.Card;
+import lin.thompson.deck.CardDeck;
 import lin.thompson.factory.WorkoutFactoryImpl;
 import lin.thompson.global.GlobalHelpers;
 import lin.thompson.workout.Workout;
@@ -23,7 +23,7 @@ public class WorkoutActivity extends Activity {
 	private ImageView cardImage;
 	WorkoutFactoryImpl factory = new WorkoutFactoryImpl();
 	Workout testWorkout = factory.createHardcodedWorkoutOne();
-	ArrayList<Card> cardsList = testWorkout.getCards();
+	CardDeck deck = testWorkout.getCardDeck();
 	GlobalHelpers helpers = new GlobalHelpers();
 
 	@Override
@@ -36,6 +36,7 @@ public class WorkoutActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
+				deck.shuffle();
 				showNewCard();
 			}
 			
@@ -76,7 +77,7 @@ public class WorkoutActivity extends Activity {
 //			}
 		} 
 	}
-
+	/*
 	// TODO
 	public Card randomCardFromDeck() {
 		Random rand = new Random();
@@ -86,14 +87,12 @@ public class WorkoutActivity extends Activity {
 
 		return card;
 	}
-
+	*/
 	// TODO
 	public void showNewCard() {
-		Card cardToShow = randomCardFromDeck();
+		Card cardToShow = deck.getTopCard();
 		String cardName = helpers.getNameFromCard(cardToShow);
-		setImageResource(GlobalHelpers.NAMED_RESOURCES.get(cardName));
-
-		cardsList.remove(cardToShow);
+		setImageResource(GlobalHelpers.NAMED_RESOURCES.get(cardName));			
 	}
 
 	private void setImageResource(Integer integer) {

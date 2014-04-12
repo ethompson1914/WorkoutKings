@@ -3,6 +3,7 @@ package lin.thompson.factory;
 import java.util.ArrayList;
 
 import lin.thompson.deck.CardDeck;
+import lin.thompson.workout.SuitsAndExercise;
 import lin.thompson.workout.Workout;
 
 public interface WorkoutFactory {
@@ -21,5 +22,7 @@ public interface WorkoutFactory {
 	Workout createHardcodedWorkoutThree();
 
 	Workout createHardcodedWorkoutFour();
+	
+	CardDeck createCardDeck(SuitsAndExercise reference);
 	
 }

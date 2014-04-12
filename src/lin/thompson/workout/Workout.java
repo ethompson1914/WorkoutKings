@@ -37,8 +37,8 @@ public class Workout {
 		exercises.add(e);
 	}
 	
-	public ArrayList<Card> getCards() {
-		return deck.getCards();
+	public CardDeck getCardDeck() {
+		return deck;
 	}
 	
 	public void addCard(Card card) {
