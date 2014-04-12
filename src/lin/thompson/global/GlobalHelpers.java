@@ -137,4 +137,9 @@ public class GlobalHelpers {
 		
 		return "";
 	}
+	
+	public void saveData(){
+		
+	}
+	
 }
