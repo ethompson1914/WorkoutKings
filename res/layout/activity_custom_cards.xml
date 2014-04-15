@@ -1,0 +1,35 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="lin.thompson.workoutkings.CustomCardsActivity"
+    tools:ignore="MergeRootFrame" >
+
+    <Button
+        android:id="@+id/backbutton_customcards"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Back" />
+
+    <Button
+        android:id="@+id/nextbutton_customcards"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="Next" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/backbutton_customcards"
+        android:layout_marginLeft="27dp"
+        android:layout_marginTop="130dp"
+        android:layout_toRightOf="@+id/backbutton_customcards"
+        android:text="Custom Cards" />
+
+</RelativeLayout>
