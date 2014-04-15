@@ -19,7 +19,7 @@ import android.widget.ImageView;
 
 public class WorkoutActivity extends Activity {
 
-	private Button backButton;
+	private Button startButton;
 	private ImageView cardImage;
 	WorkoutFactoryImpl factory = new WorkoutFactoryImpl();
 	Workout testWorkout = factory.createHardcodedWorkoutOne();
@@ -39,6 +39,17 @@ public class WorkoutActivity extends Activity {
 				showNewCard();
 			}
 			
+		});
+		
+		startButton = (Button) findViewById(R.id.startbutton_workout);
+		startButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				showNewCard();
+				Button startButton = (Button) v;
+				startButton.setVisibility(View.INVISIBLE);
+			}
 		});
 	}
 
@@ -61,22 +72,6 @@ public class WorkoutActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	public void onClick(View v) {
-
-		if(v.getId() == R.id.backbutton_workout){
-			finish(); 
-		} else if (v.getId() == R.id.nextbutton_workout) {
-			//if(cardsList.size() != 0) {
-				showNewCard();
-//			} else {
-//				// TODO Need a way to differentiate between half and full decks
-//		    	// "Create New Workout" was clicked   
-//		    	Intent intent = new Intent(v.getContext(), ChooseCardsActivity.class);
-//		    	startActivity(intent);
-//			}
-		} 
-	}
-
 	// TODO
 	public Card randomCardFromDeck() {
 		Random rand = new Random();
@@ -97,7 +92,6 @@ public class WorkoutActivity extends Activity {
 	}
 
 	private void setImageResource(Integer integer) {
-		// TODO Auto-generated method stub
 		ImageView image = (ImageView) findViewById(R.id.imageView1);
 		image.setImageDrawable(getResources().getDrawable(integer));
 	}

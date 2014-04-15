@@ -1,26 +1,27 @@
 package lin.thompson.workout;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import lin.thompson.deck.Card;
 import lin.thompson.deck.CardDeck;
 
-public class Workout {
-	
+public class Workout implements Serializable {
+
 	private String name;
 	private CardDeck deck;
 	private ArrayList<String> exercises;
-	
+
 	public Workout(String name, CardDeck deck, ArrayList<String> exercises) {
 		this.name = name;
 		this.deck = deck;
 		this.exercises = exercises;
 	}
-	
+
 	public Workout(String name) {
 		this.name = name;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -36,15 +37,15 @@ public class Workout {
 	public void addExercise(String e) {
 		exercises.add(e);
 	}
-	
+
 	public ArrayList<Card> getCards() {
 		return deck.getCards();
 	}
-	
+
 	public void addCard(Card card) {
 		deck.addCard(card);
 	}
-	
+
 	public CardDeck getDeck() {
 		return deck;
 	}
