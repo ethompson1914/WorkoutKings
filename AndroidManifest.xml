@@ -39,14 +39,7 @@
             android:name="lin.thompson.workoutkings.Activity.WorkoutActivity"
             android:label="@string/title_activity_workout" >
         </activity>
-        <activity
-            android:name="lin.thompson.workoutkings.Activity.WorkoutActivity"
-            android:label="@string/title_activity_workout" >
-        </activity>
-        <activity
-            android:name="lin.thompson.workoutkings.Activity.WorkoutActivity"
-            android:label="@string/title_activity_workout" >
-        </activity>
+       
         <activity
             android:name="lin.thompson.workoutkings.Activity.ChooseCardsActivity"
             android:label="@string/title_activity_choose_cards" >
@@ -58,6 +51,10 @@
         <activity
             android:name="lin.thompson.workoutkings.Activity.NewExerciseActivity"
             android:label="@string/title_activity_new_exercise" >
+        </activity>
+        <activity
+            android:name="lin.thompson.workoutkings.CustomCardsActivity"
+            android:label="@string/title_activity_custom_cards" >
         </activity>
     </application>
 

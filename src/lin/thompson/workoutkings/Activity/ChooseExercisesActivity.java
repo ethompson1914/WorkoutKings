@@ -10,6 +10,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
 public class ChooseExercisesActivity extends Activity {
 
@@ -17,11 +19,42 @@ public class ChooseExercisesActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_choose_exercises);
+
+		// OnClick Listener for "Custom"
+		Button back = (Button) findViewById(R.id.backbutton_chooseexercises);
+		back.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				finish();
+			}
+		});
+
+		// OnClick Listener for "New Exercise"
+		Button newExercise = (Button) findViewById(R.id.newexercise_chooseexercises);
+		newExercise.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(v.getContext(), NewExerciseActivity.class);
+				startActivity(intent);
+			}
+		});
+
+		// OnClick Listener for "Let's Do This!"
+		Button ready = (Button) findViewById(R.id.readybutton_chooseexercises);
+		ready.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(v.getContext(), WorkoutActivity.class);
+				startActivity(intent);
+			}
+		});
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.choose_exercises, menu);
 		return true;
@@ -37,22 +70,6 @@ public class ChooseExercisesActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
-	}
-	
-	public void onClick(View v){
-
-	    if(v.getId() == R.id.backbutton_chooseexercises) {
-	    	// "Back" button was pressed
-	        finish(); 
-	    } else if (v.getId() == R.id.newexercisebutton_chooseexercises) {
-	    	// "New Exercise" button was pressed    
-			Intent intent = new Intent(v.getContext(), NewExerciseActivity.class);
-			startActivity(intent);
-	    } else if (v.getId() == R.id.readybutton_chooseexercises) {
-	    	// TODO "Let's Do This" button was pressed
-	    	Intent intent = new Intent(v.getContext(), WorkoutActivity.class);
-			startActivity(intent);
-	    }
 	}
 
 }

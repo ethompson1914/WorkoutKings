@@ -1,33 +1,35 @@
-package lin.thompson.workoutkings.Activity;
+package lin.thompson.workoutkings;
 
-import lin.thompson.workoutkings.R;
-import android.app.Activity;
+import lin.thompson.workoutkings.Activity.ChooseCardsActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class ChooseCardsActivity extends Activity {
+public class CustomCardsActivity extends ActionBarActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_choose_cards);
-		
-		Button next = (Button) findViewById(R.id.nextbutton_choosecards);
+		setContentView(R.layout.activity_custom_cards);
+
+		// OnClick Listener for "Next"
+		Button next = (Button) findViewById(R.id.nextbutton_customcards);
 		next.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(v.getContext(), ChooseExercisesActivity.class);
+				Intent intent = new Intent(v.getContext(), ChooseCardsActivity.class);
 				startActivity(intent);
 			}
 		});
-		
-		Button back = (Button) findViewById(R.id.backbutton_choosecards);
+
+		// OnClick Listener for "Back"
+		Button back = (Button) findViewById(R.id.backbutton_customcards);
 		back.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -40,7 +42,7 @@ public class ChooseCardsActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.choose_cards, menu);
+		getMenuInflater().inflate(R.menu.custom_cards, menu);
 		return true;
 	}
 
@@ -57,4 +59,3 @@ public class ChooseCardsActivity extends Activity {
 	}
 
 }
-

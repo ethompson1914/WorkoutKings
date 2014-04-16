@@ -1,3 +1,4 @@
+
 package lin.thompson.workout;
 
 import java.util.ArrayList;
@@ -45,10 +46,6 @@ public class Workout {
 		deck.addCard(card);
 	}
 	
-	public CardDeck getDeck() {
-		return deck;
-	}
-
 	public String toString() {
 		StringBuilder returnString = new StringBuilder();
 		returnString.append(name + "\n");
