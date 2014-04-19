@@ -10,12 +10,12 @@ public class Workout implements Serializable {
 
 	private String name;
 	private CardDeck deck;
-	private ArrayList<String> exercises;
+	private SuitsAndExercise suitsAndExercise;
 
-	public Workout(String name, CardDeck deck, ArrayList<String> exercises) {
+	public Workout(String name, CardDeck deck, SuitsAndExercise suitsAndExercise) {
 		this.name = name;
 		this.deck = deck;
-		this.exercises = exercises;
+		this.suitsAndExercise = suitsAndExercise;
 	}
 
 	public Workout(String name) {
@@ -30,12 +30,8 @@ public class Workout implements Serializable {
 		this.name = name;
 	}
 
-	public ArrayList<String> getExercises() {
-		return exercises;
-	}
-
-	public void addExercise(String e) {
-		exercises.add(e);
+	public String getExercise(String suits) {
+		return suitsAndExercise.getExerciseFromSuit(suits);
 	}
 
 	public ArrayList<Card> getCards() {
@@ -54,9 +50,9 @@ public class Workout implements Serializable {
 		StringBuilder returnString = new StringBuilder();
 		returnString.append(name + "\n");
 		int count = 0;
-		while(!exercises.isEmpty() && count < exercises.size()) {
-			returnString.append(", " + exercises.get(count));
-		}
+		//while(!exercises.isEmpty() && count < exercises.size()) {
+		//	returnString.append(", " + exercises.get(count));
+		//}
 		return returnString.toString();
 	}
 }

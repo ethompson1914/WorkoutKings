@@ -3,24 +3,26 @@ package lin.thompson.factory;
 import java.util.ArrayList;
 
 import lin.thompson.deck.CardDeck;
+import lin.thompson.global.ConstantVariables;
+import lin.thompson.workout.SuitsAndExercise;
 import lin.thompson.workout.Workout;
 
 public class WorkoutFactoryImpl implements WorkoutFactory {
 	
 	@Override
-	public Workout createWorkout(String name, CardDeck deck, ArrayList<String> exercises) {
-		return new Workout(name, deck, exercises);
+	public Workout createWorkout(String name, CardDeck deck, SuitsAndExercise suitsAndExercise) {
+		return new Workout(name, deck, suitsAndExercise);
 	}
 
 	@Override
 	public Workout createHardcodedWorkoutOne() {
 		CardDeck deck = new CardDeck();
-		ArrayList<String> exercises = new ArrayList<String>();
-		exercises.add(new String("Pushups"));
-		exercises.add(new String("Situps"));
-		exercises.add(new String("Squats"));
-		exercises.add(new String("Lunges"));
-		Workout workout = new Workout("Workout 1", deck, exercises);
+		SuitsAndExercise assign = new SuitsAndExercise();
+		assign.addExerciseToSuit(ConstantVariables.suits[0], "Pushups");
+		assign.addExerciseToSuit(ConstantVariables.suits[1], "Situps");
+		assign.addExerciseToSuit(ConstantVariables.suits[2], "Squats");
+		assign.addExerciseToSuit(ConstantVariables.suits[3], "Lunges");
+		Workout workout = new Workout("Workout 1", deck, assign);
 		
 		return workout;
 	}
@@ -28,12 +30,12 @@ public class WorkoutFactoryImpl implements WorkoutFactory {
 	@Override
 	public Workout createHardcodedWorkoutTwo() {
 		CardDeck deck = new CardDeck();
-		ArrayList<String> exercises = new ArrayList<String>();
-		exercises.add(new String("Pushups"));
-		exercises.add(new String("Situps"));
-		exercises.add(new String("Squats"));
-		exercises.add(new String("Lunges"));
-		Workout workout = new Workout("Workout 2", deck, exercises);
+		SuitsAndExercise assign = new SuitsAndExercise();
+		assign.addExerciseToSuit(ConstantVariables.suits[0], "Pushups");
+		assign.addExerciseToSuit(ConstantVariables.suits[1], "Situps");
+		assign.addExerciseToSuit(ConstantVariables.suits[2], "Squats");
+		assign.addExerciseToSuit(ConstantVariables.suits[3], "Lunges");
+		Workout workout = new Workout("Workout 2", deck, assign);
 		
 		return workout;
 	}
@@ -41,12 +43,12 @@ public class WorkoutFactoryImpl implements WorkoutFactory {
 	@Override
 	public Workout createHardcodedWorkoutThree() {
 		CardDeck deck = new CardDeck();
-		ArrayList<String> exercises = new ArrayList<String>();
-		exercises.add(new String("Pushups"));
-		exercises.add(new String("Situps"));
-		exercises.add(new String("Squats"));
-		exercises.add(new String("Lunges"));
-		Workout workout = new Workout("Workout 3", deck, exercises);
+		SuitsAndExercise assign = new SuitsAndExercise();
+		assign.addExerciseToSuit(ConstantVariables.suits[0], "Pushups");
+		assign.addExerciseToSuit(ConstantVariables.suits[1], "Situps");
+		assign.addExerciseToSuit(ConstantVariables.suits[2], "Squats");
+		assign.addExerciseToSuit(ConstantVariables.suits[3], "Lunges");
+		Workout workout = new Workout("Workout 3", deck, assign);
 		
 		return workout;
 	}
@@ -54,12 +56,12 @@ public class WorkoutFactoryImpl implements WorkoutFactory {
 	@Override
 	public Workout createHardcodedWorkoutFour() {
 		CardDeck deck = new CardDeck();
-		ArrayList<String> exercises = new ArrayList<String>();
-		exercises.add(new String("Pushups"));
-		exercises.add(new String("Situps"));
-		exercises.add(new String("Squats"));
-		exercises.add(new String("Lunges"));
-		Workout workout = new Workout("Workout 4", deck, exercises);
+		SuitsAndExercise assign = new SuitsAndExercise();
+		assign.addExerciseToSuit(ConstantVariables.suits[0], "Pushups");
+		assign.addExerciseToSuit(ConstantVariables.suits[1], "Situps");
+		assign.addExerciseToSuit(ConstantVariables.suits[2], "Squats");
+		assign.addExerciseToSuit(ConstantVariables.suits[3], "Lunges");
+		Workout workout = new Workout("Workout 4", deck, assign);
 		
 		return workout;
 	}

@@ -57,7 +57,7 @@ public class MainActivity extends Activity {
 			public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
 				if(position == 0) {
 					// "Create New Workout" was clicked   
-					Intent intent = new Intent(view.getContext(), NewWorkoutActivity.class);
+					Intent intent = new Intent(view.getContext(), ChooseExercisesActivity.class);
 					startActivity(intent);
 				} else {
 					// Anything else was clicked    
