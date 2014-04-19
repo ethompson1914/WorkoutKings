@@ -137,9 +137,4 @@ public class GlobalHelpers {
 		
 		return "";
 	}
-	
-	public void saveWorkoutDeckData(String name, String suitsAndExercise, String cardDeck ){
-		
-	}
-	
 }

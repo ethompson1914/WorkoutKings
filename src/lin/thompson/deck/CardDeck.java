@@ -1,10 +1,6 @@
 package lin.thompson.deck;
-import java.util.ArrayList;
-import java.util.Random;
-
-import lin.thompson.workout.SuitsAndExercise;
-//Built-in java class.
-//Built-in java class.
+import java.util.ArrayList; //Built-in java class.
+import java.util.Random; //Built-in java class.
 
 
 public class CardDeck {	
@@ -47,10 +43,10 @@ public class CardDeck {
 	   * with another element at a randomly chosen index */
 	  public void shuffle(){
 	    
-	    for(int x = 0; x < deck.size(); x++){
+	    for(int x=0; x<deck.size();x++){
 	      Random r= new Random(); //Using the built-in class Random.
-	      int k = r.nextInt(deck.size()); 
-	      Card temp = deck.get(k); //Need a temporary Card object as the original value will be replaced.
+	      int k= r.nextInt(deck.size()); 
+	      Card temp= deck.get(k); //Need a temporary Card object as the original value will be replaced.
 	      int p = r.nextInt(deck.size());
 	      deck.set(k, deck.get(p)); //Swapping the elements
 	      deck.set(p, temp);        //Swapping the elements

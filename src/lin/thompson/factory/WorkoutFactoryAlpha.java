@@ -51,10 +51,4 @@ public class WorkoutFactoryAlpha implements WorkoutFactory {
 		return null;
 	}
 
-	@Override
-	public CardDeck createCardDeck(SuitsAndExercise reference) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

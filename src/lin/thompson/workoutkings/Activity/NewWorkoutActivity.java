@@ -1,6 +1,5 @@
 package lin.thompson.workoutkings.Activity;
 
-import lin.thompson.workoutkings.CustomCardsActivity;
 import lin.thompson.workoutkings.R;
 import android.app.Activity;
 import android.content.Intent;

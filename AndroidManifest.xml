@@ -39,7 +39,14 @@
             android:name="lin.thompson.workoutkings.Activity.WorkoutActivity"
             android:label="@string/title_activity_workout" >
         </activity>
-       
+        <activity
+            android:name="lin.thompson.workoutkings.Activity.WorkoutActivity"
+            android:label="@string/title_activity_workout" >
+        </activity>
+        <activity
+            android:name="lin.thompson.workoutkings.Activity.WorkoutActivity"
+            android:label="@string/title_activity_workout" >
+        </activity>
         <activity
             android:name="lin.thompson.workoutkings.Activity.ChooseCardsActivity"
             android:label="@string/title_activity_choose_cards" >

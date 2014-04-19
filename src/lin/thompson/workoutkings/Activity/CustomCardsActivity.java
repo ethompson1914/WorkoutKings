@@ -1,6 +1,6 @@
-package lin.thompson.workoutkings;
+package lin.thompson.workoutkings.Activity;
 
-import lin.thompson.workoutkings.Activity.ChooseCardsActivity;
+import lin.thompson.workoutkings.R;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
