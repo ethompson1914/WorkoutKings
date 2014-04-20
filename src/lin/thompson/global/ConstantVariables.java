@@ -12,18 +12,19 @@ public class ConstantVariables {
 	  public final static String[] suits = {"Clubs", "Diamonds", "Hearts", "Spades"};
 	  public static HashMap<String,Picture> map = new HashMap<String,Picture>();
 	  public static ArrayList<String> exercises = new ArrayList<String>();
-	  
-	  public static void addExercise(String exercise){
-		  exercises.add(exercise);
+	  public static List<Exercise> exerciseList = new ArrayList<Exercise>();
+	  public static void addExercise(String exerciseName){
+		  exerciseList.add(new Exercise(exerciseName,""));
 	  }
 	  
 	  //return boolean for successful/unsuccessful deletion?
+	  //TODO not done
 	  public static void removeExercise(String exercise){
-		  exercises.remove(exercise);
+		  exerciseList.remove(exercise);
 	  }
 	  
 	  public static List<Exercise> getDefaultExerciseData(){
-		  List<Exercise> exerciseList = new ArrayList<Exercise>();
+		  
 		  exerciseList.add(new Exercise("Pushups",""));
 		  exerciseList.add(new Exercise("Squats",""));
 		  exerciseList.add(new Exercise("Jumping Jacks",""));

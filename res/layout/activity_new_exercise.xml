@@ -14,6 +14,16 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="40dp"
         android:text="Add" />
+    
+    <Button 
+        android:id="@+id/cancelbutton_newexercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="40dp"
+        android:text="Cancel"
+        />
 
     <EditText
         android:id="@+id/nameexercise_newexercise"
@@ -23,5 +33,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="122dp"
         android:ems="10" />
+    
 
 </RelativeLayout>

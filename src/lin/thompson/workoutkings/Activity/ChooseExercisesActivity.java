@@ -45,6 +45,8 @@ public class ChooseExercisesActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
+				exerciseListAdapter.clear();
+				//exerciseListAdapter.notifyDataSetChanged();
 				finish();
 			}
 		});
@@ -56,7 +58,7 @@ public class ChooseExercisesActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(v.getContext(), NewExerciseActivity.class);
-				startActivity(intent);
+				startActivityForResult(intent,1);
 			}
 		});
 
@@ -98,7 +100,7 @@ public class ChooseExercisesActivity extends Activity {
 
 		@Override
 		public View getView(int arg0, View arg1, ViewGroup arg2) {
-			if(arg1==null){
+			if(arg1 == null){
 				LayoutInflater inflater = (LayoutInflater) ChooseExercisesActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 				arg1 = inflater.inflate(R.layout.list_checkboxes, arg2,false);
 			}
@@ -112,6 +114,30 @@ public class ChooseExercisesActivity extends Activity {
 			return arg1;
 		}
 		
+		public void clear(){
+			exerciseList.clear();
+		}
+		
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if(requestCode == 1){
+			if(resultCode == RESULT_OK){
+				String exerciseName = data.getStringExtra("New Exercise");
+				ConstantVariables.exerciseList.add(new Exercise(exerciseName,""));
+				refresh();
+			}
+			if(resultCode == RESULT_CANCELED){
+				
+			}
+		}
+	}
+	
+	private void refresh(){
+		exerciseListAdapter.clear();
+		exerciseListAdapter = new ExerciseListAdapter();
+		exerciseListAdapter.notifyDataSetChanged();
 	}
 
 	@Override
