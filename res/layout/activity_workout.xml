@@ -30,5 +30,16 @@
         android:layout_alignParentTop="true"
         android:text="Start" />
 
+    <TextView
+        android:id="@+id/exercisesummary_workoutactivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/startbutton_workout"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/startbutton_workout"
+        android:layout_toRightOf="@+id/backbutton_workout"
+        android:textSize="32sp"
+        android:text="" />
+
 </RelativeLayout>
 

@@ -1,12 +1,11 @@
 package lin.thompson.workout;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 import lin.thompson.deck.Card;
 import lin.thompson.deck.CardDeck;
 
-public class Workout implements Serializable {
+public class Workout {
 
 	private String name;
 	private CardDeck deck;

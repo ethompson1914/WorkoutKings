@@ -1,9 +1,7 @@
 package lin.thompson.workoutkings.Activity;
 
-import java.util.ArrayList;
-import java.util.Random;
-
 import lin.thompson.deck.Card;
+import lin.thompson.deck.CardDeck;
 import lin.thompson.factory.WorkoutFactoryImpl;
 import lin.thompson.global.GlobalHelpers;
 import lin.thompson.workout.Workout;
@@ -16,39 +14,51 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class WorkoutActivity extends Activity {
 
 	private Button startButton;
 	private ImageView cardImage;
-	WorkoutFactoryImpl factory = new WorkoutFactoryImpl();
-	Workout testWorkout = factory.createHardcodedWorkoutOne();
-	ArrayList<Card> cardsList = testWorkout.getCards();
-	GlobalHelpers helpers = new GlobalHelpers();
+	private WorkoutFactoryImpl factory = new WorkoutFactoryImpl();
+	private Workout testWorkout = factory.createHardcodedWorkoutOne();
+	private CardDeck deck = testWorkout.getDeck();
+	private GlobalHelpers helpers = new GlobalHelpers();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_workout);
-		
+		deck.shuffle();
+
+		// Get the message from the intent
+		//	    Intent intent = getIntent();
+		//	    String message = intent.getStringArrayListExtra(ChooseExercisesActivity.exercises);
+
 		cardImage = (ImageView) findViewById(R.id.imageView1);
 		cardImage.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				showNewCard();
+				Button startButton = (Button) findViewById(R.id.startbutton_workout);
+				startButton.setVisibility(View.INVISIBLE);
 			}
-			
+
 		});
-		
+
 		startButton = (Button) findViewById(R.id.startbutton_workout);
 		startButton.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
-				showNewCard();
-				Button startButton = (Button) v;
-				startButton.setVisibility(View.INVISIBLE);
+				if(showNewCard()) {
+					Button startButton = (Button) v;
+					startButton.setVisibility(View.INVISIBLE);
+				} else if(findViewById(R.id.imageView1).getResources().equals(findViewById(R.drawable.finish))) {
+					ImageView image = (ImageView) findViewById(R.id.imageView1);
+					image.setImageDrawable(getResources().getDrawable(R.drawable.finish));
+				} else { return; }
 			}
 		});
 	}
@@ -72,27 +82,25 @@ public class WorkoutActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	// TODO
-	public Card randomCardFromDeck() {
-		Random rand = new Random();
-		int random = rand.nextInt(cardsList.size());
-		Card card = cardsList.get(random);
-		cardsList.remove(card);
-
-		return card;
-	}
-
-	// TODO
-	public void showNewCard() {
-		Card cardToShow = randomCardFromDeck();
-		String cardName = helpers.getNameFromCard(cardToShow);
-		setImageResource(GlobalHelpers.NAMED_RESOURCES.get(cardName));
-
-		cardsList.remove(cardToShow);
+	public boolean showNewCard() {
+		if(deck.getCards().size() > 0) {
+			Card cardToShow = deck.getTopCard();
+			showExercise(cardToShow);
+			String cardName = helpers.getNameFromCard(cardToShow);
+			setImageResource(GlobalHelpers.NAMED_RESOURCES.get(cardName));
+			return true;
+		} else { return false; }
 	}
 
 	private void setImageResource(Integer integer) {
 		ImageView image = (ImageView) findViewById(R.id.imageView1);
 		image.setImageDrawable(getResources().getDrawable(integer));
+	}
+
+	public void showExercise(Card card) {
+		String suit = card.getSuitName();
+		String exercise = testWorkout.getExercise(suit);
+		TextView exerciseAsStringView = (TextView) findViewById(R.id.exercisesummary_workoutactivity);
+		exerciseAsStringView.setText(exercise);
 	}
 }

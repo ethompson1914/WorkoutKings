@@ -1,5 +1,7 @@
 package lin.thompson.workoutkings.Activity;
 
+import java.util.ArrayList;
+
 import lin.thompson.workoutkings.R;
 import android.app.Activity;
 import android.content.Intent;
@@ -9,8 +11,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
 
 public class ChooseExercisesActivity extends Activity {
+
+	static ArrayList<String> exercises = new ArrayList<String>();
+	ArrayList<CheckBox> boxes = new ArrayList<CheckBox>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +50,11 @@ public class ChooseExercisesActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(v.getContext(), WorkoutActivity.class);
-				startActivity(intent);
+				if(fourChecked()) {
+					Intent intent = new Intent(v.getContext(), WorkoutActivity.class);
+					intent.putExtra("Exercises", exercises);
+					startActivity(intent);
+				}
 			}
 		});
 	}
@@ -67,6 +76,25 @@ public class ChooseExercisesActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	public boolean fourChecked() {
+		int count = 0;
+		for(CheckBox box : boxes) {
+			if(box.isChecked()) {
+				count++;
+			}
+		}
+		if(count == 4) { return true; }
+		else { return false; }
+	}
+	
+	public void populateExercises() {
+	
+	}
+	
+	public ArrayList<String> getExercises() {
+		return exercises;
 	}
 
 }
