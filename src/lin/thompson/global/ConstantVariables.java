@@ -2,7 +2,9 @@ package lin.thompson.global;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
+import lin.thompson.workout.Exercise;
 import android.graphics.Picture;
 
 public class ConstantVariables {
@@ -18,6 +20,14 @@ public class ConstantVariables {
 	  //return boolean for successful/unsuccessful deletion?
 	  public static void removeExercise(String exercise){
 		  exercises.remove(exercise);
+	  }
+	  
+	  public static List<Exercise> getDefaultExerciseData(){
+		  List<Exercise> exerciseList = new ArrayList<Exercise>();
+		  exerciseList.add(new Exercise("Pushups",""));
+		  exerciseList.add(new Exercise("Squats",""));
+		  exerciseList.add(new Exercise("Jumping Jacks",""));
+		  return exerciseList;
 	  }
 	  
 }
