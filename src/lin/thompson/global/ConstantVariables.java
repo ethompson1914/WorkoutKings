@@ -31,4 +31,8 @@ public class ConstantVariables {
 		  return exerciseList;
 	  }
 	  
+	  public static List<Exercise> getExerciseData(){
+		  return exerciseList;
+	  }
+	  
 }

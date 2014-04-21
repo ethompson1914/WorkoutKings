@@ -78,7 +78,7 @@ public class ChooseExercisesActivity extends Activity {
 	}
 	
 	public class ExerciseListAdapter extends BaseAdapter {
-		List<Exercise> exerciseList = ConstantVariables.getDefaultExerciseData();
+		List<Exercise> exerciseList = ConstantVariables.getExerciseData();
 
 		@Override
 		public int getCount() {
