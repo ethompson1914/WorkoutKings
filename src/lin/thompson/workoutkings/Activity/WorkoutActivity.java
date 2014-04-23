@@ -1,5 +1,7 @@
 package lin.thompson.workoutkings.Activity;
 
+import java.util.Timer;
+
 import lin.thompson.deck.Card;
 import lin.thompson.deck.CardDeck;
 import lin.thompson.factory.WorkoutFactoryImpl;
@@ -7,7 +9,9 @@ import lin.thompson.global.GlobalHelpers;
 import lin.thompson.workout.Workout;
 import lin.thompson.workoutkings.R;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +22,8 @@ import android.widget.TextView;
 
 public class WorkoutActivity extends Activity {
 
+	private Button stopButton;
+	private Button backButton;
 	private Button startButton;
 	private ImageView cardImage;
 	private WorkoutFactoryImpl factory = new WorkoutFactoryImpl();
@@ -35,6 +41,15 @@ public class WorkoutActivity extends Activity {
 		//	    Intent intent = getIntent();
 		//	    String message = intent.getStringArrayListExtra(ChooseExercisesActivity.exercises);
 
+		backButton = (Button) findViewById(R.id.backbutton_workout);
+		backButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				finish();
+			}
+		});
+
 		cardImage = (ImageView) findViewById(R.id.imageView1);
 		cardImage.setOnClickListener(new OnClickListener() {
 
@@ -49,6 +64,15 @@ public class WorkoutActivity extends Activity {
 
 		startButton = (Button) findViewById(R.id.startbutton_workout);
 		startButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				showNewCard();
+			}
+		});
+
+		stopButton = (Button) findViewById(R.id.startbutton_workout);
+		stopButton.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {

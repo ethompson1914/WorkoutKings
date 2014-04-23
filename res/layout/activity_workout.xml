@@ -18,8 +18,10 @@
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/timer_workout"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/backbutton_workout"
+        android:layout_toLeftOf="@+id/timer_workout"
         android:src="@drawable/thumbsup" />
 
     <Button
@@ -40,6 +42,15 @@
         android:layout_toRightOf="@+id/backbutton_workout"
         android:textSize="32sp"
         android:text="" />
+
+    <Chronometer
+        android:id="@+id/timer_workout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/startbutton_workout"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="Chronometer" />
 
 </RelativeLayout>
 
