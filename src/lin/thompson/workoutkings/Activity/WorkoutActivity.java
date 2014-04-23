@@ -1,7 +1,5 @@
 package lin.thompson.workoutkings.Activity;
 
-import java.util.Timer;
-
 import lin.thompson.deck.Card;
 import lin.thompson.deck.CardDeck;
 import lin.thompson.factory.WorkoutFactoryImpl;
@@ -9,9 +7,7 @@ import lin.thompson.global.GlobalHelpers;
 import lin.thompson.workout.Workout;
 import lin.thompson.workoutkings.R;
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,8 +23,8 @@ public class WorkoutActivity extends Activity {
 	private Button startButton;
 	private ImageView cardImage;
 	private WorkoutFactoryImpl factory = new WorkoutFactoryImpl();
-	private Workout testWorkout = factory.createHardcodedWorkoutOne();
-	private CardDeck deck = testWorkout.getDeck();
+	private Workout testWorkout = factory.createHardcodedWorkoutFour();
+	private CardDeck deck = new CardDeck();
 	private GlobalHelpers helpers = new GlobalHelpers();
 
 	@Override
@@ -38,8 +34,8 @@ public class WorkoutActivity extends Activity {
 		deck.shuffle();
 
 		// Get the message from the intent
-		//	    Intent intent = getIntent();
-		//	    String message = intent.getStringArrayListExtra(ChooseExercisesActivity.exercises);
+//			    Intent intent = getIntent();
+//			    String message = intent.getStringArrayExtra(name));
 
 		backButton = (Button) findViewById(R.id.backbutton_workout);
 		backButton.setOnClickListener(new OnClickListener() {

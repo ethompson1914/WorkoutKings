@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
     <issue id="NewApi">
+        <ignore path="src/lin/thompson/workoutkings/Activity/ChooseExercisesActivity.java" />
         <ignore path="src/lin/thompson/workoutkings/Activity/WorkoutActivity.java" />
     </issue>
 </lint>

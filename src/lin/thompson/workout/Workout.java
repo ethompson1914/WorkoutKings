@@ -1,19 +1,13 @@
 package lin.thompson.workout;
 
-import java.util.ArrayList;
-
-import lin.thompson.deck.Card;
-import lin.thompson.deck.CardDeck;
 
 public class Workout {
 
 	private String name;
-	private CardDeck deck;
 	private SuitsAndExercise suitsAndExercise;
 
-	public Workout(String name, CardDeck deck, SuitsAndExercise suitsAndExercise) {
+	public Workout(String name, SuitsAndExercise suitsAndExercise) {
 		this.name = name;
-		this.deck = deck;
 		this.suitsAndExercise = suitsAndExercise;
 	}
 
@@ -32,17 +26,15 @@ public class Workout {
 	public String getExercise(String suits) {
 		return suitsAndExercise.getExerciseFromSuit(suits);
 	}
-
-	public ArrayList<Card> getCards() {
-		return deck.getCards();
-	}
-
-	public void addCard(Card card) {
-		deck.addCard(card);
-	}
-
-	public CardDeck getDeck() {
-		return deck;
+	
+	public String exercisesAsString() {
+		StringBuilder returnString = new StringBuilder();
+		returnString.append(suitsAndExercise.getExerciseFromSuit("Clubs") + " ");
+		returnString.append(suitsAndExercise.getExerciseFromSuit("Hearts") + " ");
+		returnString.append(suitsAndExercise.getExerciseFromSuit("Spades") + " ");
+		returnString.append(suitsAndExercise.getExerciseFromSuit("Diamonds"));
+		
+		return returnString.toString();
 	}
 
 	public String toString() {
