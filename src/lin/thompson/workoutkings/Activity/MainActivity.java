@@ -31,14 +31,14 @@ public class MainActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		loadWorkouts();
+		//loadWorkouts();
 
 		// Find the ListView resource. 
 		mainListView = (ListView) findViewById( R.id.mainListView );
 
 		// TODO Add workouts from saved info
 		// Hardcoded workouts for now
-		ArrayList<Workout> workoutsList = new ArrayList<Workout>();
+		final ArrayList<Workout> workoutsList = new ArrayList<Workout>();
 		workoutsList.add(factory.createBlankWorkout());
 		workoutsList.add(factory.createHardcodedWorkoutOne());
 		workoutsList.add(factory.createHardcodedWorkoutTwo());
@@ -48,16 +48,21 @@ public class MainActivity extends Activity {
 		// Create and populate a List of workout names.
 		ArrayList<String> workoutNames = new ArrayList<String>();
 		workoutNames.add("Create new workout...");
+		workoutNames.add(factory.createHardcodedWorkoutOne().getName());
+		workoutNames.add(factory.createHardcodedWorkoutTwo().getName());
+		workoutNames.add(factory.createHardcodedWorkoutThree().getName());
+		workoutNames.add(factory.createHardcodedWorkoutFour().getName());
 		for(Workout workout : savedWorkouts.values()) {
 			workoutsList.add(workout);
 			workoutNames.add(workout.getName());
 		}
 
 		// Create ArrayAdapter using the workout list.
-		listAdapter = new ArrayAdapter<String>(this, R.layout.simplerow);
+		listAdapter = new ArrayAdapter<String>(this, R.layout.simplerow, workoutNames);
 
 		// Set the ArrayAdapter as the ListView's adapter.
 		mainListView.setAdapter( listAdapter );
+		mainListView.setVerticalScrollBarEnabled(true);
 
 		mainListView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
@@ -68,19 +73,22 @@ public class MainActivity extends Activity {
 				} else {
 					// Anything else was clicked    
 					Intent intent = new Intent(view.getContext(), WorkoutActivity.class);
+					intent.putExtra(workoutsList.get(position).getName(), workoutsList.get(position).exercisesAsString());
 					startActivity(intent);
 				}                 
 			}
 		});     
 	}
-	
-	public void loadWorkouts() {
-		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-		HashMap<String, String> savedValues = (HashMap<String, String>) preferences.getAll();
-		for(String workout : savedValues.keySet()) {
-			StringTokenizer st = new StringTokenizer(workout);
-			String name = st.nextToken();
-			savedWorkouts.put(name, new Workout(name, new SuitsAndExercise(st.nextToken(), st.nextToken(), st.nextToken(), st.nextToken())));
-		}
-	}
+
+//	public void loadWorkouts() {
+//		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+//		HashMap<String, String> savedValues = (HashMap<String, String>) preferences.getAll();
+//		for(String workout : savedValues.keySet()) {
+//			StringTokenizer st = new StringTokenizer(workout);
+//			String name = st.nextToken();
+//			if(name != "Exercise") {
+//				savedWorkouts.put(name, new Workout(name, new SuitsAndExercise(st.nextToken(), st.nextToken(), st.nextToken(), st.nextToken())));
+//			}
+//		}
+//	}
 }

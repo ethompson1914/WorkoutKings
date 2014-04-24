@@ -3,6 +3,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?android:attr/activatedBackgroundIndicator"
     tools:context="lin.thompson.workoutkings.Activity.ChooseExercisesActivity"
     tools:ignore="MergeRootFrame" >
 
@@ -34,9 +35,7 @@
     <ListView
         android:id="@+id/exercise_listview1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"        
-        android:layout_below="@+id/readybutton_chooseexercises"/>
-
-    
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/readybutton_chooseexercises" />
 
 </RelativeLayout>

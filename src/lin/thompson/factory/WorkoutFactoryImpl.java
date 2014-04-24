@@ -18,7 +18,7 @@ public class WorkoutFactoryImpl implements WorkoutFactory {
 		assign.addExerciseToSuit(ConstantVariables.suits[1], "Situps");
 		assign.addExerciseToSuit(ConstantVariables.suits[2], "Squats");
 		assign.addExerciseToSuit(ConstantVariables.suits[3], "Lunges");
-		Workout workout = new Workout("Workout 1", assign);
+		Workout workout = new Workout("Generic Workout", assign);
 		
 		return workout;
 	}
@@ -26,11 +26,11 @@ public class WorkoutFactoryImpl implements WorkoutFactory {
 	@Override
 	public Workout createHardcodedWorkoutTwo() {
 		SuitsAndExercise assign = new SuitsAndExercise();
-		assign.addExerciseToSuit(ConstantVariables.suits[0], "Pushups");
+		assign.addExerciseToSuit(ConstantVariables.suits[0], "Bicycle Kicks");
 		assign.addExerciseToSuit(ConstantVariables.suits[1], "Situps");
-		assign.addExerciseToSuit(ConstantVariables.suits[2], "Squats");
-		assign.addExerciseToSuit(ConstantVariables.suits[3], "Lunges");
-		Workout workout = new Workout("Workout 2", assign);
+		assign.addExerciseToSuit(ConstantVariables.suits[2], "Crunches");
+		assign.addExerciseToSuit(ConstantVariables.suits[3], "Pick Pockets");
+		Workout workout = new Workout("Abs", assign);
 		
 		return workout;
 	}
@@ -39,10 +39,10 @@ public class WorkoutFactoryImpl implements WorkoutFactory {
 	public Workout createHardcodedWorkoutThree() {
 		SuitsAndExercise assign = new SuitsAndExercise();
 		assign.addExerciseToSuit(ConstantVariables.suits[0], "Pushups");
-		assign.addExerciseToSuit(ConstantVariables.suits[1], "Situps");
-		assign.addExerciseToSuit(ConstantVariables.suits[2], "Squats");
-		assign.addExerciseToSuit(ConstantVariables.suits[3], "Lunges");
-		Workout workout = new Workout("Workout 3", assign);
+		assign.addExerciseToSuit(ConstantVariables.suits[1], "Tricep Dips");
+		assign.addExerciseToSuit(ConstantVariables.suits[2], "Triangle Pushups");
+		assign.addExerciseToSuit(ConstantVariables.suits[3], "Pushup Claps");
+		Workout workout = new Workout("Arms", assign);
 		
 		return workout;
 	}
@@ -50,11 +50,11 @@ public class WorkoutFactoryImpl implements WorkoutFactory {
 	@Override
 	public Workout createHardcodedWorkoutFour() {
 		SuitsAndExercise assign = new SuitsAndExercise();
-		assign.addExerciseToSuit(ConstantVariables.suits[0], "Pushups");
-		assign.addExerciseToSuit(ConstantVariables.suits[1], "Situps");
-		assign.addExerciseToSuit(ConstantVariables.suits[2], "Squats");
-		assign.addExerciseToSuit(ConstantVariables.suits[3], "Lunges");
-		Workout workout = new Workout("Workout 4", assign);
+		assign.addExerciseToSuit(ConstantVariables.suits[0], "Jumping Jacks");
+		assign.addExerciseToSuit(ConstantVariables.suits[1], "High Knees");
+		assign.addExerciseToSuit(ConstantVariables.suits[2], "Heismans");
+		assign.addExerciseToSuit(ConstantVariables.suits[3], "Squat Thrusts");
+		Workout workout = new Workout("Cardio", assign);
 		
 		return workout;
 	}

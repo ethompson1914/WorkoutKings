@@ -1,19 +1,21 @@
 package lin.thompson.workoutkings.Activity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import lin.thompson.global.ConstantVariables;
 import lin.thompson.workout.Exercise;
+import lin.thompson.workout.SuitsAndExercise;
 import lin.thompson.workout.Workout;
 import lin.thompson.workoutkings.R;
 import android.app.Activity;
+import android.content.ClipData.Item;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,10 +30,10 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
 
-public class ChooseExercisesActivity extends Activity {
+public class ChooseExercisesActivity extends Activity implements Serializable {
 
 	private static ArrayList<String> exercises = new ArrayList<String>();
-	private ArrayList<CheckBox> boxes = new ArrayList<CheckBox>();
+	private static ArrayList<String> checkedExercises = new ArrayList<String>();
 	private ExerciseListAdapter exerciseListAdapter;
 	private Workout workout;
 	private ListView exerciseListView;
@@ -42,57 +44,66 @@ public class ChooseExercisesActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_choose_exercises);
 
-		// Find the ListView resource. 
-		exerciseListView = (ListView) findViewById( R.id.mainListView );
-		exerciseListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-		exerciseListView.setSelected(true);
-		exerciseListView.setSelection(0);
-		
-//		exerciseListAdapter = new ExerciseListAdapter();
-//		ListView exerciseList = (ListView) findViewById(R.id.exercise_listview1);
-//		exerciseList.setAdapter(exerciseListAdapter);
-
 		// Create and populate a List of workout names.
-		ArrayList<String> exercises = new ArrayList<String>();
+		final ArrayList<String> exercises = new ArrayList<String>();
 		exercises.add("Pushups");
 		exercises.add("Situps");
 		exercises.add("Squats");
 		exercises.add("Lunges");
-//		for(Workout workout : savedWorkouts.values()) {
-//			workoutsList.add(workout);
-//		}
+		exercises.add("Bicycle Kicks");
+		exercises.add("Crunches");
+		exercises.add("Pick Pockets");
+		exercises.add("Tricep Dips");
+		exercises.add("Triangle Pushups");
+		exercises.add("Pushup Claps");
+		exercises.add("Jumping Jacks");
+		exercises.add("High Knees");
+		exercises.add("Heismans");
+		exercises.add("Squat Thrusts");
+
+		// Find the ListView resource. 
+		exerciseListView = (ListView) findViewById( R.id.exercise_listview1 );
 
 		// Create ArrayAdapter using the workout list.
 		listAdapter = new ArrayAdapter<String>(this, R.layout.simplerow, exercises);
 
 		// Set the ArrayAdapter as the ListView's adapter.
 		exerciseListView.setAdapter( listAdapter );
+		exerciseListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+		exerciseListView.setVerticalScrollBarEnabled(true);
+
+		//		exerciseListAdapter = new ExerciseListAdapter();
+		//		ListView exerciseList = (ListView) findViewById(R.id.exercise_listview1);
+		//		exerciseList.setAdapter(exerciseListAdapter);
 
 		exerciseListView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
+				// Name Workout was clicked
 				if(position == 0) {
-					// "Create New Workout" was clicked   
-					Intent intent = new Intent(view.getContext(), ChooseExercisesActivity.class);
-					startActivity(intent);
-				} else {
-					// Anything else was clicked    
-					Intent intent = new Intent(view.getContext(), WorkoutActivity.class);
-					startActivity(intent);
-				}                 
+					
+				} 
+				// Anything else
+				else {
+					checkedExercises.add(exerciseListView.getItemAtPosition(position).toString());
+					view.setSelected(true);
+				}
 			}
 		});    
-		
+
 		//TODO add listeners to adapter.
-		
-		
+
+		//		for(String ex : exercises) {
+		//			workoutsList.add(workout);
+		//			workoutNames.add(workout.getName());
+		//		}
+
+
 		// OnClick Listener for "Custom"
 		Button back = (Button) findViewById(R.id.backbutton_chooseexercises);
 		back.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				exerciseListAdapter.clear();
-				//exerciseListAdapter.notifyDataSetChanged();
 				finish();
 			}
 		});
@@ -104,7 +115,7 @@ public class ChooseExercisesActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(v.getContext(), NewExerciseActivity.class);
-				startActivityForResult(intent,1);
+				startActivityForResult(intent, 1);
 			}
 		});
 
@@ -115,21 +126,24 @@ public class ChooseExercisesActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				if(fourChecked()) {
-					saveWorkout(workout);
+					for(int k=0; k<4; k++) {
+						workout = new Workout("New Workout", new SuitsAndExercise(
+								checkedExercises.get(0), checkedExercises.get(1), checkedExercises.get(2), checkedExercises.get(3)));
+					}
+					//workout = new Workout();
+					//saveWorkout(workout);
 					Intent intent = new Intent(v.getContext(), WorkoutActivity.class);
+					intent.putExtra("New Workout", workout.exercisesAsString());
 					startActivity(intent);
 				}
 			}
 		});
 	}
-	
-	private void saveWorkout(Workout workout) {
-		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-		SharedPreferences.Editor editor = preferences.edit();
-		editor.putString(workout.getName(), workout.exercisesAsString());
-		editor.commit();
-	}
-	
+
+//	private void saveWorkout(Workout workout) {
+//		getPreferences(MODE_PRIVATE).edit().putString(workout.getName(), workout.exercisesAsString()).commit();
+//	}
+
 	public class ExerciseListAdapter extends BaseAdapter {
 		List<Exercise> exerciseList = ConstantVariables.getExerciseData();
 
@@ -157,22 +171,22 @@ public class ChooseExercisesActivity extends Activity {
 				LayoutInflater inflater = (LayoutInflater) ChooseExercisesActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 				arg1 = inflater.inflate(R.layout.list_checkboxes, arg2,false);
 			}
-			
+
 			CheckBox exerciseName = (CheckBox)arg1.findViewById(R.id.checkBox1);
-			
+
 			Exercise exercise = exerciseList.get(arg0);
-			
+
 			exerciseName.setText(exercise.getExerciseName());
-			
+
 			return arg1;
 		}
-		
+
 		public void clear(){
 			exerciseList.clear();
 		}
-		
+
 	}
-	
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if(requestCode == 1){
@@ -182,11 +196,11 @@ public class ChooseExercisesActivity extends Activity {
 				refresh();
 			}
 			if(resultCode == RESULT_CANCELED){
-				
+
 			}
 		}
 	}
-	
+
 	private void refresh(){
 		exerciseListAdapter.clear();
 		exerciseListAdapter = new ExerciseListAdapter();
@@ -217,11 +231,7 @@ public class ChooseExercisesActivity extends Activity {
 		if(count == 4) { return true; }
 		else { return false; }
 	}
-	
-	public void populateExercises() {
-	
-	}
-	
+
 	public ArrayList<String> getExercises() {
 		return exercises;
 	}

@@ -24,6 +24,7 @@ public class WorkoutActivity extends Activity {
 	private ImageView cardImage;
 	private WorkoutFactoryImpl factory = new WorkoutFactoryImpl();
 	private Workout testWorkout = factory.createHardcodedWorkoutFour();
+	private Workout workout;
 	private CardDeck deck = new CardDeck();
 	private GlobalHelpers helpers = new GlobalHelpers();
 
@@ -31,6 +32,7 @@ public class WorkoutActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_workout);
+		workout = (Workout) getIntent().getSerializableExtra("New Workout");
 		deck.shuffle();
 
 		// Get the message from the intent
