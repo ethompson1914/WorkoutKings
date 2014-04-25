@@ -5,15 +5,6 @@
     android:layout_height="match_parent"
     tools:context="lin.thompson.workoutkings.Activity.NewExerciseActivity"
     tools:ignore="MergeRootFrame" >
-
-    <Button
-        android:id="@+id/addbutton_newexercise"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dp"
-        android:text="Add" />
     
     <Button 
         android:id="@+id/cancelbutton_newexercise"
@@ -33,6 +24,25 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="122dp"
         android:ems="10" />
-    
+
+    <Button
+        android:id="@+id/deletebutton_newexercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/addbutton_newexercise"
+        android:layout_alignBottom="@+id/addbutton_newexercise"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="35dp"
+        android:text="Delete" />
+
+    <Button
+        android:id="@+id/addbutton_newexercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="45dp"
+        android:layout_marginLeft="34dp"
+        android:text="Add" />
 
 </RelativeLayout>

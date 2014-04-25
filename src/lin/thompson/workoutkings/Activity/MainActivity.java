@@ -1,6 +1,7 @@
 package lin.thompson.workoutkings.Activity;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import lin.thompson.factory.WorkoutFactoryImpl;
 import lin.thompson.workout.Workout;
@@ -34,13 +35,17 @@ public class MainActivity extends Activity {
 		
 		//XML
 		PreferenceManager.setDefaultValues(this, R.layout.preference_initial_exercise_data, false);
-		
-		try{
-			SharedPreferences prefs = this.getSharedPreferences("master_exercise_list", Context.MODE_PRIVATE);
+		SharedPreferences prefs = this.getSharedPreferences("master_exercise_list", Context.MODE_PRIVATE);
+		String check = prefs.getString("PreferenceExist", "notExist");
+		if(check.equals("notExist")){
+			SharedPreferences.Editor editor = prefs.edit();
+			Map<String,?> keys = PreferenceManager.getDefaultSharedPreferences(this).getAll();
+			for(Map.Entry<String, ?> entry: keys.entrySet()){
+				editor.putString(entry.getKey(),(String)entry.getValue());
+			}
+			editor.commit();
 		}
-		catch (Exception e){
-			SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-		}
+			
 		// TODO Add workouts from saved info
 		// Hardcoded workouts for now
 		final ArrayList<Workout> workoutsList = new ArrayList<Workout>();

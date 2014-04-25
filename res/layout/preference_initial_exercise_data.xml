@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" > 
+     <EditTextPreference android:key="PreferenceExist" android:defaultValue="PreferenceExist"/>
+     <EditTextPreference android:key="Pushups" android:defaultValue="Pushups"/> 
+     <EditTextPreference android:key="Situps" android:defaultValue="Situps"/> 
+     <EditTextPreference android:key="Squats" android:defaultValue="Squats"/> 
+     <EditTextPreference android:key="Lunges" android:defaultValue="Lunges"/> 
+     <EditTextPreference android:key="Bicycle Kicks" android:defaultValue="Bicycle Kicks"/> 
+     <EditTextPreference android:key="Crunches" android:defaultValue="Crunches"/>
+      <EditTextPreference android:key="Pick Pockets" android:defaultValue="Pick Pockets"/>
+       <EditTextPreference android:key="Tricep Dips" android:defaultValue="Tricep Dips"/>
+       <EditTextPreference android:key="Triangle Pushups" android:defaultValue="Triangle Pushups"/>
+       <EditTextPreference android:key="Pushup Claps" android:defaultValue="Pushup Claps"/>
+       <EditTextPreference android:key="Jumping Jacks" android:defaultValue="Jumping Jacks"/>
+       <EditTextPreference android:key="High Knees" android:defaultValue="High Knees"/>
+       <EditTextPreference android:key="Heismans" android:defaultValue="Heismans"/>
+       <EditTextPreference android:key="Squat Thrusts" android:defaultValue="Squat Thrusts"/>
+       <EditTextPreference android:key="Tricep Dips" android:defaultValue="Tricep Dips"/>
+       <EditTextPreference android:key="High Kicks" android:defaultValue="High Kicks"/>
+        </PreferenceScreen>
+

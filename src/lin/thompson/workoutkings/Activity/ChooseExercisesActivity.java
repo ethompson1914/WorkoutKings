@@ -2,6 +2,7 @@ package lin.thompson.workoutkings.Activity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import lin.thompson.global.ConstantVariables;
 import lin.thompson.workout.Exercise;
@@ -9,6 +10,7 @@ import lin.thompson.workoutkings.R;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -57,8 +59,20 @@ public class ChooseExercisesActivity extends Activity {
 		// Find the ListView resource. 
 		exerciseListView = (ListView) findViewById( R.id.exercise_listview1 );
 
+		SharedPreferences prefs = this.getSharedPreferences("master_exercise_list", Context.MODE_PRIVATE);
+		
+		ArrayList<String> master_exercise = new ArrayList<String>();
+
+		Map<String,?> keys = prefs.getAll();
+		for(Map.Entry<String, ?> entry: keys.entrySet()){
+			if(!entry.getKey().equals("PreferenceExist")){
+			master_exercise.add(entry.getKey());
+			}
+			
+		}
 		// Create ArrayAdapter using the workout list.
-		listAdapter = new ArrayAdapter<String>(this, R.layout.simplerow, exercises);
+		listAdapter = new ArrayAdapter<String>(this, R.layout.simplerow, master_exercise);
+		
 
 		// Set the ArrayAdapter as the ListView's adapter.
 		exerciseListView.setAdapter( listAdapter );
@@ -93,13 +107,14 @@ public class ChooseExercisesActivity extends Activity {
 		});
 
 		// OnClick Listener for "New Exercise"
-		Button newExercise = (Button) findViewById(R.id.newexercise_chooseexercises);
+		Button newExercise = (Button) findViewById(R.id.deletebutton_newexercise);
 		newExercise.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(v.getContext(), NewExerciseActivity.class);
-				startActivityForResult(intent, 1);
+				startActivity(intent);
+				finish();
 			}
 		});
 
@@ -163,19 +178,7 @@ public class ChooseExercisesActivity extends Activity {
 
 	}
 
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if(requestCode == 1){
-			if(resultCode == RESULT_OK){
-				String exerciseName = data.getStringExtra("New Exercise");
-				ConstantVariables.exerciseList.add(new Exercise(exerciseName,""));
-				refresh();
-			}
-			if(resultCode == RESULT_CANCELED){
-
-			}
-		}
-	}
+	
 
 	private void refresh(){
 		exerciseListAdapter.clear();

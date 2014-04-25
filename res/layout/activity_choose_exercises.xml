@@ -16,20 +16,11 @@
         android:text="Back" />
 
     <Button
-        android:id="@+id/newexercise_chooseexercises"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/backbutton_chooseexercises"
-        android:text="New Exercise" />
-
-    <Button
         android:id="@+id/readybutton_chooseexercises"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/newexercise_chooseexercises"
         android:text="Let&apos;s Do This!" />
 
     <ListView
@@ -37,5 +28,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/readybutton_chooseexercises" />
+
+    <Button
+        android:id="@+id/deletebutton_newexercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/backbutton_chooseexercises"
+        android:text="New/Delete" />
 
 </RelativeLayout>
