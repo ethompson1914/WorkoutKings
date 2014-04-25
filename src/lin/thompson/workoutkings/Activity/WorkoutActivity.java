@@ -1,10 +1,7 @@
 package lin.thompson.workoutkings.Activity;
 
-import java.util.ArrayList;
-
 import lin.thompson.deck.Card;
 import lin.thompson.deck.CardDeck;
-import lin.thompson.factory.WorkoutFactoryImpl;
 import lin.thompson.global.GlobalHelpers;
 import lin.thompson.workout.SuitsAndExercise;
 import lin.thompson.workout.Workout;
@@ -24,11 +21,9 @@ public class WorkoutActivity extends Activity {
 	private Button backButton;
 	private Button startButton;
 	private ImageView cardImage;
-	private WorkoutFactoryImpl factory = new WorkoutFactoryImpl();
 	private Workout workout;
 	private CardDeck deck = new CardDeck();
 	private GlobalHelpers helpers = new GlobalHelpers();
-	private ArrayList<String> exercises;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -111,8 +106,8 @@ public class WorkoutActivity extends Activity {
 			setImageResource(GlobalHelpers.NAMED_RESOURCES.get(cardName));
 			return true;
 		} else { 
-			TextView exercise = (TextView) findViewById(R.id.imageView1);
-			exercise.clearComposingText();
+			TextView exercise = (TextView) findViewById(R.id.exercisesummary_workoutactivity);
+			exercise.setText("");
 			setImageResource(R.drawable.finish);
 			return false; 
 		}

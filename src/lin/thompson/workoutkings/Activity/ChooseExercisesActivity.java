@@ -78,6 +78,7 @@ public class ChooseExercisesActivity extends Activity {
 		exerciseListView.setAdapter( listAdapter );
 		exerciseListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 		exerciseListView.setVerticalScrollBarEnabled(true);
+		exerciseListView.setItemsCanFocus(false);
 		
 		checkedExercises.add("Pushups");
 		checkedExercises.add("Squats");
