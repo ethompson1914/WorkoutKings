@@ -1,9 +1,12 @@
 package lin.thompson.workoutkings.Activity;
 
+import java.util.ArrayList;
+
 import lin.thompson.deck.Card;
 import lin.thompson.deck.CardDeck;
 import lin.thompson.factory.WorkoutFactoryImpl;
 import lin.thompson.global.GlobalHelpers;
+import lin.thompson.workout.SuitsAndExercise;
 import lin.thompson.workout.Workout;
 import lin.thompson.workoutkings.R;
 import android.app.Activity;
@@ -18,26 +21,31 @@ import android.widget.TextView;
 
 public class WorkoutActivity extends Activity {
 
-	private Button stopButton;
 	private Button backButton;
 	private Button startButton;
 	private ImageView cardImage;
 	private WorkoutFactoryImpl factory = new WorkoutFactoryImpl();
-	private Workout testWorkout = factory.createHardcodedWorkoutFour();
 	private Workout workout;
 	private CardDeck deck = new CardDeck();
 	private GlobalHelpers helpers = new GlobalHelpers();
+	private ArrayList<String> exercises;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_workout);
-		workout = (Workout) getIntent().getSerializableExtra("New Workout");
 		deck.shuffle();
 
 		// Get the message from the intent
-//			    Intent intent = getIntent();
-//			    String message = intent.getStringArrayExtra(name));
+		Bundle b = this.getIntent().getExtras();
+		String[] array = b.getStringArray("HL");
+		
+		if(array.length > 0) {
+			workout = new Workout("New", new SuitsAndExercise(array[0], array[1], array[2], array[3]));
+		}
+		else{
+			setImageResource(R.drawable.android_logo);
+		}
 
 		backButton = (Button) findViewById(R.id.backbutton_workout);
 		backButton.setOnClickListener(new OnClickListener() {
@@ -48,39 +56,30 @@ public class WorkoutActivity extends Activity {
 			}
 		});
 
+		startButton = (Button) findViewById(R.id.startbutton_workout);
 		cardImage = (ImageView) findViewById(R.id.imageView1);
 		cardImage.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
+				if(startButton.getText().equals("Start")) {
+					startButton.setText("End");
+				}
 				showNewCard();
-				Button startButton = (Button) findViewById(R.id.startbutton_workout);
-				startButton.setVisibility(View.INVISIBLE);
 			}
 
 		});
 
-		startButton = (Button) findViewById(R.id.startbutton_workout);
 		startButton.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				showNewCard();
-			}
-		});
-
-		stopButton = (Button) findViewById(R.id.startbutton_workout);
-		stopButton.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				if(showNewCard()) {
-					Button startButton = (Button) v;
-					startButton.setVisibility(View.INVISIBLE);
-				} else if(findViewById(R.id.imageView1).getResources().equals(findViewById(R.drawable.finish))) {
-					ImageView image = (ImageView) findViewById(R.id.imageView1);
-					image.setImageDrawable(getResources().getDrawable(R.drawable.finish));
-				} else { return; }
+				if(startButton.getText().equals("Start")) {
+					showNewCard();
+					startButton.setText("End");
+				} else {
+					finish();
+				}
 			}
 		});
 	}
@@ -111,7 +110,12 @@ public class WorkoutActivity extends Activity {
 			String cardName = helpers.getNameFromCard(cardToShow);
 			setImageResource(GlobalHelpers.NAMED_RESOURCES.get(cardName));
 			return true;
-		} else { return false; }
+		} else { 
+			TextView exercise = (TextView) findViewById(R.id.imageView1);
+			exercise.clearComposingText();
+			setImageResource(R.drawable.finish);
+			return false; 
+		}
 	}
 
 	private void setImageResource(Integer integer) {
@@ -121,7 +125,7 @@ public class WorkoutActivity extends Activity {
 
 	public void showExercise(Card card) {
 		String suit = card.getSuitName();
-		String exercise = testWorkout.getExercise(suit);
+		String exercise = workout.getExercise(suit);
 		TextView exerciseAsStringView = (TextView) findViewById(R.id.exercisesummary_workoutactivity);
 		exerciseAsStringView.setText(exercise);
 	}

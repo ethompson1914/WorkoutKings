@@ -1,21 +1,15 @@
 package lin.thompson.workoutkings.Activity;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import lin.thompson.global.ConstantVariables;
 import lin.thompson.workout.Exercise;
-import lin.thompson.workout.SuitsAndExercise;
-import lin.thompson.workout.Workout;
 import lin.thompson.workoutkings.R;
 import android.app.Activity;
-import android.content.ClipData.Item;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,12 +24,11 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
 
-public class ChooseExercisesActivity extends Activity implements Serializable {
+public class ChooseExercisesActivity extends Activity {
 
 	private static ArrayList<String> exercises = new ArrayList<String>();
 	private static ArrayList<String> checkedExercises = new ArrayList<String>();
 	private ExerciseListAdapter exerciseListAdapter;
-	private Workout workout;
 	private ListView exerciseListView;
 	private ArrayAdapter<String> listAdapter;
 
@@ -71,32 +64,23 @@ public class ChooseExercisesActivity extends Activity implements Serializable {
 		exerciseListView.setAdapter( listAdapter );
 		exerciseListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 		exerciseListView.setVerticalScrollBarEnabled(true);
-
-		//		exerciseListAdapter = new ExerciseListAdapter();
-		//		ListView exerciseList = (ListView) findViewById(R.id.exercise_listview1);
-		//		exerciseList.setAdapter(exerciseListAdapter);
+		
+		checkedExercises.add("Pushups");
+		checkedExercises.add("Squats");
+		checkedExercises.add("Situps");
+		checkedExercises.add("High Knees");
 
 		exerciseListView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
-				// Name Workout was clicked
-				if(position == 0) {
-					
-				} 
-				// Anything else
-				else {
-					checkedExercises.add(exerciseListView.getItemAtPosition(position).toString());
+				if(view.isSelected()) {
+					view.setSelected(false);
+					view.refreshDrawableState();
+				} else {
 					view.setSelected(true);
+					view.refreshDrawableState();
 				}
 			}
 		});    
-
-		//TODO add listeners to adapter.
-
-		//		for(String ex : exercises) {
-		//			workoutsList.add(workout);
-		//			workoutNames.add(workout.getName());
-		//		}
-
 
 		// OnClick Listener for "Custom"
 		Button back = (Button) findViewById(R.id.backbutton_chooseexercises);
@@ -126,23 +110,15 @@ public class ChooseExercisesActivity extends Activity implements Serializable {
 			@Override
 			public void onClick(View v) {
 				if(fourChecked()) {
-					for(int k=0; k<4; k++) {
-						workout = new Workout("New Workout", new SuitsAndExercise(
-								checkedExercises.get(0), checkedExercises.get(1), checkedExercises.get(2), checkedExercises.get(3)));
-					}
-					//workout = new Workout();
-					//saveWorkout(workout);
-					Intent intent = new Intent(v.getContext(), WorkoutActivity.class);
-					intent.putExtra("New Workout", workout.exercisesAsString());
+					Bundle b = new Bundle();
+					b.putStringArray("HL", new String[] { checkedExercises.get(0), checkedExercises.get(1), checkedExercises.get(2), checkedExercises.get(3) });
+					Intent intent = new Intent(ChooseExercisesActivity.this, WorkoutActivity.class);
+					intent.putExtras(b);
 					startActivity(intent);
 				}
 			}
 		});
 	}
-
-//	private void saveWorkout(Workout workout) {
-//		getPreferences(MODE_PRIVATE).edit().putString(workout.getName(), workout.exercisesAsString()).commit();
-//	}
 
 	public class ExerciseListAdapter extends BaseAdapter {
 		List<Exercise> exerciseList = ConstantVariables.getExerciseData();

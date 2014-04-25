@@ -1,9 +1,8 @@
 package lin.thompson.workout;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Workout implements Serializable {
+public class Workout {
 
 	private String name;
 	private SuitsAndExercise suitsAndExercise;
@@ -25,8 +24,8 @@ public class Workout implements Serializable {
 		this.name = name;
 	}
 
-	public String getExercise(String suits) {
-		return suitsAndExercise.getExerciseFromSuit(suits);
+	public String getExercise(String suit) {
+		return suitsAndExercise.getExerciseFromSuit(suit);
 	}
 	
 	public ArrayList<String> getAllExercises() {

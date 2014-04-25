@@ -3,6 +3,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:keepScreenOn="true"
     tools:context="lin.thompson.workoutkings.Activity.WorkoutActivity"
     tools:ignore="MergeRootFrame" >
 
