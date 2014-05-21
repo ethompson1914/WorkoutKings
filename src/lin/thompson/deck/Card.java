@@ -4,7 +4,7 @@ import lin.thompson.global.ConstantVariables;
 
 public class Card {
 	
-	  private final int suit;  // between 0 and 3
+	  private final int suit;  // between 0 and 3 //
 	  private final int number;  // between 2 and 14
 	  
 	  /* Constructor */
